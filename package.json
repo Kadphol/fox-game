@@ -1,0 +1,15 @@
+{
+  "name": "fox-game",
+  "version": "1.0.0",
+  "description": "Hello! These are the various steps for the [fox game project][site] as outlined for [Frontend Masters][fem]. You'll want to pop over there for the lessons. [Here][game] is a deployed version of the final game.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel src/index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "devDependencies": {
+    "parcel": "^2.16.3"
+  }
+}
