@@ -6,7 +6,8 @@
     "test": "jest",
     "dev": "parcel src/index.html",
     "format": "prettier --write .",
-    "lint": "eslint --ignore-path ./.gitignore --fix \"./**/*.{js,ts}\""
+    "lint": "eslint --ignore-path ./.gitignore --fix \"./**/*.{js,ts}\"",
+    "build": "parcel build --public-url ./ --dist-dir docs"
   },
   "author": "",
   "license": "ISC",
