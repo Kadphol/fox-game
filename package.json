@@ -4,10 +4,10 @@
   "description": "Hello! These are the various steps for the [fox game project][site] as outlined for [Frontend Masters][fem]. You'll want to pop over there for the lessons. [Here][game] is a deployed version of the final game.",
   "scripts": {
     "test": "jest",
-    "dev": "parcel",
+    "dev": "parcel index.html",
     "format": "prettier --write .",
     "lint": "eslint --ignore-path ./.gitignore --fix \"./**/*.{js,ts}\"",
-    "build": "parcel build"
+    "build": "parcel build index.html"
   },
   "author": "",
   "license": "ISC",
