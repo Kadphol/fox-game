@@ -8,7 +8,7 @@ import {
   getNextHungerTime,
   getNextPoopTime,
 } from './constants'
-import { modFox, modScene, togglePoopBag } from './ui'
+import { modFox, modScene, togglePoopBag, writeModal } from './ui'
 
 const gameState = {
   current: STATE.INIT,
@@ -45,6 +45,7 @@ const gameState = {
     this.wakeTime = this.clock + 3
     modFox('egg')
     modScene('day')
+    writeModal('')
   },
   wake() {
     this.current = STATE.IDLING
@@ -82,6 +83,7 @@ const gameState = {
     this.sleepTime = -1
     modFox('sleep')
     modScene('night')
+    this.clearTimes()
     this.wakeTime = this.clock + NIGHT_LENGTH
   },
   getHungry() {
@@ -91,11 +93,15 @@ const gameState = {
     modFox('hungry')
   },
   die() {
-    console.log('dead')
+    this.current = STATE.DEAD
+    modScene('dead')
+    modFox('dead')
+    this.clearTimes()
+    writeModal('The fox died :( <br/> Press the middle button to start')
   },
   startCelebrating() {
     this.current = STATE.CELEBRATING
-    modFox('celebrating')
+    modFox('celebrate')
     this.timeToStartCelebrating = -1
     this.timeToEndCelebrating = this.clock + 2
   },
@@ -119,6 +125,15 @@ const gameState = {
     this.poopTime = -1
     this.dieTime = getNextDieTime(this.clock)
     modFox('pooping')
+  },
+  clearTimes() {
+    this.wakeTime = -1
+    this.sleepTime = -1
+    this.hungryTime = -1
+    this.dieTime = -1
+    this.poopTime = -1
+    this.timeToStartCelebrating = -1
+    this.timeToEndCelebrating = -1
   },
   handleUserAction(icon) {
     if ([STATE.CELEBRATING, STATE.SLEEPING, STATE.FEEDING, STATE.HATCHING].includes(this.current)) {
